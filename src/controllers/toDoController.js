@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-unused-vars */
 const toDoService = require('../services/toDoService');
 
 const getAllTasks = async (req, res, _next) => {
@@ -17,7 +19,7 @@ const getTaskById = async (req, res, _next) => {
 
     return res.status(200).json(task);
   } catch (error) {
-    return res.status(404).json({ message: "Task not found" });
+    return res.status(404).json({ message: 'Task not found' });
   }
 };
 
@@ -26,7 +28,7 @@ const createTask = async (req, res, next) => {
     const { tarefa } = req.body;
 
     const newTask = await toDoService.createTask(
-      tarefa
+      tarefa,
     );
 
     return res.status(201).json(newTask);
