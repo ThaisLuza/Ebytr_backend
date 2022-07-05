@@ -13,7 +13,7 @@
  - Se não tiver o MySQL instalado, é possível roda-lo com esse comando:  
  
     ```docker run --name meu-mysql-5_7 -e MYSQL_ROOT_PASSWORD=1234 -d -p 3306:3306 mysql:5.7 ```
- - Configure seu arquivo .env para estabelecer conexão com o banco de dados;
+ - Configure seu arquivo .env para estabelecer conexão com o banco de dados (é de extrema importância que a porta seja a especificada abaixo);
   ```
     MYSQL_HOST=localhost
     MYSQL_USER=root
