@@ -25,10 +25,11 @@ const getTaskById = async (req, res, _next) => {
 
 const createTask = async (req, res, next) => {
   try {
-    const { tarefa } = req.body;
+    const { tarefa, status } = req.body;
 
     const newTask = await toDoService.createTask(
       tarefa,
+      status,
     );
 
     return res.status(201).json(newTask);
@@ -40,9 +41,9 @@ const createTask = async (req, res, next) => {
 const updateTask = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { tarefa } = req.body;
+    const { tarefa, status } = req.body;
 
-    const data = { tarefa };
+    const data = { tarefa, status };
     const newData = await toDoService.updateTask(id, data);
 
     return res.status(200).json(newData);

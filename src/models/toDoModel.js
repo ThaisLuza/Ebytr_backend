@@ -16,27 +16,29 @@ const getTaskById = async (id) => {
   return task[0];
 };
 
-const createTask = async (tarefa) => {
-  const query = 'INSERT INTO Ebytr.list (tarefa) VALUES (?)';
-  const [newId] = await connection.execute(query, [tarefa]);
+const createTask = async (tarefa, status) => {
+  const query = 'INSERT INTO Ebytr.list (tarefa, status) VALUES (?, ?)';
+  const [newId] = await connection.execute(query, [tarefa, status]);
 
   const newTask = {
     id: newId.insertId,
     tarefa,
+    status,
   };
 
   return newTask;
 };
 
-const updateTask = async (id, { tarefa }) => {
-  const query = 'UPDATE Ebytr.list SET tarefa = ? WHERE id = ?';
-  const newData = await connection.execute(query, [tarefa, id]);
+const updateTask = async (id, { tarefa, status }) => {
+  const query = 'UPDATE Ebytr.list SET tarefa = ?, status = ? WHERE id = ?';
+  const newData = await connection.execute(query, [tarefa, status, id]);
 
   if (newData.length === 0) return null;
 
   return {
     id,
     tarefa,
+    status,
   };
 };
 

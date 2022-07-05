@@ -9,8 +9,8 @@ routeList.post('/', toDoController.createTask);
 
 routeList.get('/:id', toDoController.getTaskById);
 
-routeList.put('/', toDoController.updateTask);
+routeList.put('/:id', toDoController.updateTask);
 
-routeList.delete('/', toDoController.deleteTask);
+routeList.delete('/:id', toDoController.deleteTask);
 
 module.exports = routeList;

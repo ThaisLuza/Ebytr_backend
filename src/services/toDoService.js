@@ -15,20 +15,21 @@ const getTaskById = async (id) => {
   return task;
 };
 
-const createTask = async (tarefa) => {
+const createTask = async (tarefa, status) => {
   // const verifyProduct = await productModel.getProductByCodigo(codigo);
 
   // if (verifyProduct) throw erroHandler(409, "Product already exists");
 
   const newTask = await toDoModel.createTask(
     tarefa,
+    status,
   );
 
   return newTask;
 };
 
 const updateTask = async (id, data) => {
-  const verifyId = await toDoModel.getTaskById();
+  const verifyId = await toDoModel.getTaskById(id);
 
   if (!verifyId) throw erroHandler(404, 'Task not found');
 
@@ -38,7 +39,7 @@ const updateTask = async (id, data) => {
 };
 
 const deleteTask = async (id) => {
-  const verifyId = await toDoModel.getTaskById();
+  const verifyId = await toDoModel.getTaskById(id);
 
   if (!verifyId) throw erroHandler(404, 'Task not found');
 
